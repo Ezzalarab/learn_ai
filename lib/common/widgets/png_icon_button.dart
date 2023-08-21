@@ -16,7 +16,7 @@ class PngIconButton extends StatelessWidget {
       child: SizedBox(
         width: 40.w,
         height: 40.w,
-        child: Image.asset('assets/icons/$iconName'),
+        child: Image.asset('assets/icons/$iconName.png'),
       ),
     );
   }

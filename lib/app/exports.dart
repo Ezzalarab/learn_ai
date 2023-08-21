@@ -1,4 +1,6 @@
 export '../app/exports.dart';
+export '../common/widgets/custom_button.dart';
+export '../common/widgets/custom_text_field.dart';
 export '../common/widgets/png_icon_button.dart';
 export '../pages/main/home_page.dart';
 export '../pages/sign_in/sign_in_page.dart';

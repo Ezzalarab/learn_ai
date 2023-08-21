@@ -1,5 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:learn_ai/app/exports.dart';
+import '../../app/exports.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -24,10 +23,32 @@ class _SignInPageState extends State<SignInPage> {
                 _buildThirdPartyLogin(context),
                 Center(child: _buildText('Or use your email account to login')),
                 Container(
-                  margin: EdgeInsets.only(top: 66.h, left: 25.w),
+                  margin: EdgeInsets.only(
+                    top: 66.h,
+                    left: 25.w,
+                    right: 25.w,
+                  ),
                   child: Column(
                     children: [
                       _buildText('Email'),
+                      const CustomTextField(
+                        hint: 'Enter your email address',
+                        type: 'email',
+                        iconName: 'user',
+                      ),
+                      SizedBox(height: 25.h),
+                      _buildText('Password'),
+                      const CustomTextField(
+                        hint: 'Enter your password',
+                        type: 'password',
+                        iconName: 'lock',
+                      ),
+                      SizedBox(height: 20.h),
+                      _buildForgotPassword(),
+                      SizedBox(height: 40.h),
+                      const CustomButton(title: 'Log in'),
+                      SizedBox(height: 20.h),
+                      const CustomButton(title: 'Register'),
                     ],
                   ),
                 ),
@@ -70,13 +91,13 @@ class _SignInPageState extends State<SignInPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           PngIconButton(
-            iconName: 'google.png',
+            iconName: 'google',
           ),
           PngIconButton(
-            iconName: 'apple.png',
+            iconName: 'apple',
           ),
           PngIconButton(
-            iconName: 'facebook.png',
+            iconName: 'facebook',
           ),
         ],
       ),
@@ -96,20 +117,21 @@ class _SignInPageState extends State<SignInPage> {
       ),
     );
   }
-}
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({
-    required this.hint,
-    this.type = 'text',
-    super.key,
-  });
-  final String hint;
-  final String type;
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(hintText: hint),
-    );
-  }
+  Widget _buildForgotPassword() => SizedBox(
+        width: 325.w,
+        height: 44.h,
+        child: GestureDetector(
+          onTap: () {},
+          child: Text(
+            'Forgot password?',
+            style: TextStyle(
+              color: Colors.blue,
+              fontSize: 12.sp,
+              fontWeight: FontWeight.normal,
+              decoration: TextDecoration.underline,
+            ),
+          ),
+        ),
+      );
 }
