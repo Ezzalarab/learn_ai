@@ -4,10 +4,14 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     required this.title,
+    this.bgColor = AppColors.primaryElement,
+    this.titleColor = AppColors.primaryBackground,
+    this.borderColor = AppColors.primaryThreeElementText,
     this.onTap,
   });
   final String title;
   final void Function()? onTap;
+  final Color bgColor, titleColor, borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +22,12 @@ class CustomButton extends StatelessWidget {
         height: 50.h,
         margin: EdgeInsets.symmetric(horizontal: 25.w),
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color: bgColor,
           borderRadius: BorderRadius.circular(15.w),
+          border: Border.all(
+            color: borderColor,
+            width: 1,
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.1),
@@ -33,7 +41,7 @@ class CustomButton extends StatelessWidget {
           child: Text(
             title,
             style: TextStyle(
-              color: Colors.white,
+              color: titleColor,
               fontSize: 16.sp,
               fontWeight: FontWeight.normal,
             ),

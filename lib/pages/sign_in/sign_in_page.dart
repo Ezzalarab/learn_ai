@@ -11,52 +11,72 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: SafeArea(
-        child: Scaffold(
-          appBar: _buildAppBar(),
-          body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildThirdPartyLogin(context),
-                Center(child: _buildText('Or use your email account to login')),
-                Container(
-                  margin: EdgeInsets.only(
-                    top: 66.h,
-                    left: 25.w,
-                    right: 25.w,
-                  ),
-                  child: Column(
-                    children: [
-                      _buildText('Email'),
-                      const CustomTextField(
-                        hint: 'Enter your email address',
-                        type: 'email',
-                        iconName: 'user',
+    return BlocBuilder<SignInBloc, SignInState>(
+      builder: (context, state) {
+        return Container(
+          color: Colors.white,
+          child: SafeArea(
+            child: Scaffold(
+              appBar: _buildAppBar(),
+              body: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildThirdPartyLogin(context),
+                    Center(
+                        child:
+                            _buildText('Or use your email account to login')),
+                    Container(
+                      margin: EdgeInsets.only(
+                        top: 66.h,
+                        left: 25.w,
+                        right: 25.w,
                       ),
-                      SizedBox(height: 25.h),
-                      _buildText('Password'),
-                      const CustomTextField(
-                        hint: 'Enter your password',
-                        type: 'password',
-                        iconName: 'lock',
+                      child: Column(
+                        children: [
+                          _buildText('Email'),
+                          CustomTextField(
+                            hint: 'Enter your email address',
+                            type: 'email',
+                            iconName: 'user',
+                            onChanged: (v) {
+                              context
+                                  .read<SignInBloc>()
+                                  .add(SignInEmailChanged(v));
+                            },
+                          ),
+                          SizedBox(height: 25.h),
+                          _buildText('Password'),
+                          CustomTextField(
+                            hint: 'Enter your password',
+                            type: 'password',
+                            iconName: 'lock',
+                            onChanged: (v) {
+                              context
+                                  .read<SignInBloc>()
+                                  .add(SignInPasswordChanged(v));
+                            },
+                          ),
+                          SizedBox(height: 20.h),
+                          _buildForgotPassword(),
+                          SizedBox(height: 40.h),
+                          const CustomButton(title: 'Log in'),
+                          SizedBox(height: 20.h),
+                          const CustomButton(
+                            title: 'Sign Up',
+                            bgColor: AppColors.primaryBackground,
+                            titleColor: AppColors.primaryElement,
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 20.h),
-                      _buildForgotPassword(),
-                      SizedBox(height: 40.h),
-                      const CustomButton(title: 'Log in'),
-                      SizedBox(height: 20.h),
-                      const CustomButton(title: 'Register'),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -65,14 +85,14 @@ class _SignInPageState extends State<SignInPage> {
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1.0),
         child: Container(
-          color: Colors.grey.withOpacity(0.5),
+          color: AppColors.primarySecondaryBackground,
           height: 1.0, // line thickness
         ),
       ),
       title: Text(
         'Log In',
         style: TextStyle(
-          color: Colors.black,
+          color: AppColors.primaryText,
           fontSize: 16.sp,
           fontWeight: FontWeight.normal,
         ),
@@ -118,20 +138,22 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  Widget _buildForgotPassword() => SizedBox(
-        width: 325.w,
-        height: 44.h,
-        child: GestureDetector(
-          onTap: () {},
-          child: Text(
-            'Forgot password?',
-            style: TextStyle(
-              color: Colors.blue,
-              fontSize: 12.sp,
-              fontWeight: FontWeight.normal,
-              decoration: TextDecoration.underline,
-            ),
+  Widget _buildForgotPassword() {
+    return SizedBox(
+      width: 325.w,
+      height: 44.h,
+      child: GestureDetector(
+        onTap: () {},
+        child: Text(
+          'Forgot password?',
+          style: TextStyle(
+            color: AppColors.link,
+            fontSize: 12.sp,
+            fontWeight: FontWeight.normal,
+            decoration: TextDecoration.underline,
           ),
         ),
-      );
+      ),
+    );
+  }
 }

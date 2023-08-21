@@ -50,7 +50,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       _buildWelcomePage(
                         index: 3,
                         context: context,
-                        buttonName: 'Next',
+                        buttonName: 'Get Started',
                         title: 'Always Fascinated Learning',
                         subTitle:
                             'Anywhere, anytime. The time is at your discretion so study whenever you want.',
@@ -122,7 +122,9 @@ class _WelcomePageState extends State<WelcomePage> {
             ),
           ),
         ),
-        GestureDetector(
+        SizedBox(height: 100.h),
+        CustomButton(
+          title: buttonName,
           onTap: () {
             if (index < 3) {
               _pageC.animateToPage(
@@ -138,37 +140,6 @@ class _WelcomePageState extends State<WelcomePage> {
               );
             }
           },
-          child: Container(
-            margin: EdgeInsets.only(
-              top: 100.h,
-              left: 25.w,
-              right: 25.w,
-            ),
-            width: 325.w,
-            height: 50.h,
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.circular(15.r),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: const Offset(0, 1),
-                )
-              ],
-            ),
-            child: Center(
-              child: Text(
-                buttonName,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ),
-          ),
         ),
       ],
     );

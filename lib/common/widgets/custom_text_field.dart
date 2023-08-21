@@ -5,11 +5,13 @@ class CustomTextField extends StatelessWidget {
     required this.hint,
     this.type = 'text',
     this.iconName,
+    this.onChanged,
     super.key,
   });
   final String hint;
   final String type;
   final String? iconName;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,6 +53,7 @@ class CustomTextField extends StatelessWidget {
               ),
               autocorrect: false,
               obscureText: (type == 'password'),
+              onChanged: onChanged,
             ),
           ),
         ],
