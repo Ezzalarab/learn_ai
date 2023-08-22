@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       ],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Learn AI',
           theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,

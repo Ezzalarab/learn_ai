@@ -34,10 +34,19 @@ class SignInC {
           } else {
             //
           }
-        } catch (e, s) {
+        } on FirebaseAuthException catch (e, s) {
           if (kDebugMode) {
             print(e);
             print(s);
+          }
+          if (e.code == 'user-not-found') {
+            print('No user found for that email.');
+          } else if (e.code == 'wrong-password') {
+            print('Wrong password provided for that user.');
+          } else if (e.code == 'invalid-email') {
+            print('Your email format is worng.');
+          } else {
+            print(e.code);
           }
         }
       }

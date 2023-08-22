@@ -60,12 +60,18 @@ class _SignInPageState extends State<SignInPage> {
                           SizedBox(height: 20.h),
                           _buildForgotPassword(),
                           SizedBox(height: 40.h),
-                          const CustomButton(title: 'Log in'),
+                          CustomButton(
+                            title: 'Log in',
+                            onTap: () async {
+                              SignInC(context: context).handleSignIn('email');
+                            },
+                          ),
                           SizedBox(height: 20.h),
-                          const CustomButton(
+                          CustomButton(
                             title: 'Sign Up',
                             bgColor: AppColors.primaryBackground,
                             titleColor: AppColors.primaryElement,
+                            onTap: () async {},
                           ),
                         ],
                       ),
