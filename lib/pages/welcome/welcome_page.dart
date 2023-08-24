@@ -66,7 +66,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       decorator: DotsDecorator(
                           color: Colors.grey,
-                          activeColor: Colors.blue,
+                          activeColor: AppColors.primaryElement,
                           size: const Size.square(8.0),
                           activeSize: const Size(16.0, 8.0),
                           activeShape: RoundedRectangleBorder(
