@@ -1,81 +1,96 @@
 import '../../app/exports.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
-  static const String routeName = '/sign-in';
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
+  static const String routeName = '/register';
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignInBloc, SignInState>(
+    return BlocBuilder<SignUpBloc, SignUpState>(
       builder: (context, state) {
         return Container(
           color: Colors.white,
           child: SafeArea(
             child: Scaffold(
-              appBar: _buildAppBar('Log In'),
+              appBar: _buildAppBar('Sign Up'),
               body: SingleChildScrollView(
                 child: Column(
                   children: [
-                    _buildThirdPartyLogin(context),
+                    SizedBox(height: 25.h),
                     Center(
-                        child:
-                            _buildText('Or use your email account to login')),
+                      child:
+                          _buildText('Enter your details below & free sign up'),
+                    ),
                     Container(
                       margin: EdgeInsets.only(
-                        top: 66.h,
+                        top: 50.h,
                         left: 25.w,
                         right: 25.w,
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          _buildText('User name'),
+                          CustomTextField(
+                            hint: 'Enter your name',
+                            iconName: 'user',
+                            onChanged: (v) {
+                              // context
+                              //     .read<SignUpBloc>()
+                              //     .add(SignInEmailChanged(v));
+                            },
+                          ),
+                          SizedBox(height: 20.h),
                           _buildText('Email'),
                           CustomTextField(
                             hint: 'Enter your email address',
                             type: 'email',
                             iconName: 'user',
                             onChanged: (v) {
-                              context
-                                  .read<SignInBloc>()
-                                  .add(SignInEmailChanged(v));
+                              // context
+                              //     .read<SignUpBloc>()
+                              //     .add(SignInEmailChanged(v));
                             },
                           ),
-                          SizedBox(height: 25.h),
+                          SizedBox(height: 20.h),
                           _buildText('Password'),
                           CustomTextField(
                             hint: 'Enter your password',
                             type: 'password',
                             iconName: 'lock',
                             onChanged: (v) {
-                              context
-                                  .read<SignInBloc>()
-                                  .add(SignInPasswordChanged(v));
+                              // context
+                              //     .read<SignUpBloc>()
+                              //     .add(SignInPasswordChanged(v));
                             },
                           ),
                           SizedBox(height: 20.h),
-                          _buildForgotPassword(),
-                          SizedBox(height: 40.h),
+                          _buildText('Confirm Password'),
+                          CustomTextField(
+                            hint: 'Confirm your password',
+                            type: 'password',
+                            iconName: 'lock',
+                            onChanged: (v) {
+                              // context
+                              //     .read<SignUpBloc>()
+                              //     .add(SignInPasswordChanged(v));
+                            },
+                          ),
+                          SizedBox(height: 20.h),
+                          _buildText(''),
+                          SizedBox(height: 30.h),
                           CustomButton(
-                            title: 'Log in',
+                            title: 'Sign Up',
                             onTap: () async {
                               SignInC(context: context).handleSignIn('email');
                             },
                           ),
                           SizedBox(height: 20.h),
-                          CustomButton(
-                            title: 'Sign Up',
-                            bgColor: AppColors.primaryBackground,
-                            titleColor: AppColors.primaryElement,
-                            onTap: () async {
-                              Navigator.of(context)
-                                  .pushNamed(SignUpPage.routeName);
-                            },
-                          ),
                         ],
                       ),
                     ),

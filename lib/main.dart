@@ -1,6 +1,4 @@
 import 'app/exports.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
 // ...
 
@@ -19,17 +17,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => WelcomeBloc()),
-        BlocProvider(create: (context) => SignInBloc()),
-      ],
+      providers: AppBlocProviders.appBlocProviders,
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Learn AI',
           theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
               appBarTheme: const AppBarTheme(
+                // iconTheme: IconThemeData(
+                //   color: AppColors.primaryText,
+                // ),
                 elevation: 0,
                 backgroundColor: Colors.white,
               )),
@@ -38,6 +37,7 @@ class MyApp extends StatelessWidget {
             WelcomePage.routeName: (context) => const WelcomePage(),
             HomePage.routeName: (context) => const HomePage(),
             SignInPage.routeName: (context) => const SignInPage(),
+            SignUpPage.routeName: (context) => const SignUpPage(),
           },
         ),
       ),
