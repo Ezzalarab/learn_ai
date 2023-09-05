@@ -13,11 +13,12 @@ class SignInC {
         String email = state.email;
         String password = state.password;
         if (email.isEmpty) {
-          toatsInfo(msg: 'You need to fill email address');
+          toastInfo(msg: 'You need to fill email address');
+          return;
         }
         if (password.isEmpty) {
-          toatsInfo(msg: 'You need to fill password');
-          //
+          toastInfo(msg: 'You need to fill password');
+          return;
         }
         try {
           final UserCredential credential =
@@ -26,16 +27,16 @@ class SignInC {
             password: password,
           );
           if (credential.user == null) {
-            toatsInfo(msg: 'This email doesn\'t exist');
+            toastInfo(msg: 'This email doesn\'t exist');
           }
           if (!credential.user!.emailVerified) {
-            toatsInfo(msg: 'You need to verify your email acount');
+            toastInfo(msg: 'You need to verify your email acount');
           }
           User? user = credential.user;
           if (user != null) {
             // auth done
           } else {
-            toatsInfo(msg: 'Currently you are not a user of this app');
+            toastInfo(msg: 'Currently you are not a user of this app');
           }
         } on FirebaseAuthException catch (e, s) {
           if (kDebugMode) {
@@ -44,16 +45,16 @@ class SignInC {
           }
           if (e.code == 'user-not-found') {
             print('No user found for that email.');
-            toatsInfo(msg: 'No user found for that email.');
+            toastInfo(msg: 'No user found for that email.');
           } else if (e.code == 'wrong-password') {
             print('Wrong password provided for that user.');
-            toatsInfo(msg: 'Wrong password provided for that user.');
+            toastInfo(msg: 'Wrong password provided for that user.');
           } else if (e.code == 'invalid-email') {
             print('Your email format is worng.');
-            toatsInfo(msg: 'Your email format is worng.');
+            toastInfo(msg: 'Your email format is worng.');
           } else {
             print(e.code);
-            toatsInfo(msg: e.code);
+            toastInfo(msg: e.code);
           }
         }
       }

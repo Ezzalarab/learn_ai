@@ -1,6 +1,6 @@
 import '../../app/exports.dart';
 
-toatsInfo({
+toastInfo({
   required String msg,
   Color bgColor = Colors.black,
   Color textColor = Colors.white,

@@ -40,9 +40,9 @@ class _SignUpPageState extends State<SignUpPage> {
                             hint: 'Enter your name',
                             iconName: 'user',
                             onChanged: (v) {
-                              // context
-                              //     .read<SignUpBloc>()
-                              //     .add(SignInEmailChanged(v));
+                              context
+                                  .read<SignUpBloc>()
+                                  .add(SignUpUserNameChanged(v));
                             },
                           ),
                           SizedBox(height: 20.h),
@@ -52,9 +52,9 @@ class _SignUpPageState extends State<SignUpPage> {
                             type: 'email',
                             iconName: 'user',
                             onChanged: (v) {
-                              // context
-                              //     .read<SignUpBloc>()
-                              //     .add(SignInEmailChanged(v));
+                              context
+                                  .read<SignUpBloc>()
+                                  .add(SignUpEmailChanged(v));
                             },
                           ),
                           SizedBox(height: 20.h),
@@ -64,9 +64,9 @@ class _SignUpPageState extends State<SignUpPage> {
                             type: 'password',
                             iconName: 'lock',
                             onChanged: (v) {
-                              // context
-                              //     .read<SignUpBloc>()
-                              //     .add(SignInPasswordChanged(v));
+                              context
+                                  .read<SignUpBloc>()
+                                  .add(SignUpPasswordChanged(v));
                             },
                           ),
                           SizedBox(height: 20.h),
@@ -76,9 +76,9 @@ class _SignUpPageState extends State<SignUpPage> {
                             type: 'password',
                             iconName: 'lock',
                             onChanged: (v) {
-                              // context
-                              //     .read<SignUpBloc>()
-                              //     .add(SignInPasswordChanged(v));
+                              context
+                                  .read<SignUpBloc>()
+                                  .add(SignUpRePasswordChanged(v));
                             },
                           ),
                           SizedBox(height: 20.h),
@@ -87,7 +87,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           CustomButton(
                             title: 'Sign Up',
                             onTap: () async {
-                              SignInC(context: context).handleSignIn('email');
+                              SignUpC(context: context).handleSignUp();
                             },
                           ),
                           SizedBox(height: 20.h),

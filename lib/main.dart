@@ -1,4 +1,5 @@
 import 'app/exports.dart';
+import 'app/pages.dart';
 
 // ...
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: AppBlocProviders.appBlocProviders,
+      providers: [...AppPages.allBlocProviders(context)],
       child: ScreenUtilInit(
         builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -32,13 +33,16 @@ class MyApp extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: Colors.white,
               )),
-          initialRoute: WelcomePage.routeName,
-          routes: {
-            WelcomePage.routeName: (context) => const WelcomePage(),
-            HomePage.routeName: (context) => const HomePage(),
-            SignInPage.routeName: (context) => const SignInPage(),
-            SignUpPage.routeName: (context) => const SignUpPage(),
-          },
+          // home: const WelcomePage(),
+          onGenerateRoute: AppPages.generateRouteSettings,
+          // initialRoute: AppPage.routeName,
+          // routes: {
+          //   AppPage.routeName: (context) => const AppPage(),
+          //   WelcomePage.routeName: (context) => const WelcomePage(),
+          //   HomePage.routeName: (context) => const HomePage(),
+          //   SignInPage.routeName: (context) => const SignInPage(),
+          //   SignUpPage.routeName: (context) => const SignUpPage(),
+          // },
         ),
       ),
     );

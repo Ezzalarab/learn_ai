@@ -20,20 +20,28 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   _userNameChanged(
     SignUpUserNameChanged event,
     Emitter<SignUpState> emit,
-  ) {}
+  ) {
+    emit(state.copyWith(userName: event.userName));
+  }
 
   _emailChanged(
     SignUpEmailChanged event,
     Emitter<SignUpState> emit,
-  ) {}
+  ) {
+    emit(state.copyWith(email: event.email));
+  }
 
   _passwordChanged(
     SignUpPasswordChanged event,
     Emitter<SignUpState> emit,
-  ) {}
+  ) {
+    emit(state.copyWith(password: event.password));
+  }
 
   _rePasswordChanged(
     SignUpRePasswordChanged event,
     Emitter<SignUpState> emit,
-  ) {}
+  ) {
+    emit(state.copyWith(rePassword: event.rePassword));
+  }
 }
