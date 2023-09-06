@@ -2,7 +2,6 @@ import '../../app/exports.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
-  static const String routeName = '/sign-in';
 
   @override
   State<SignInPage> createState() => _SignInPageState();
@@ -72,8 +71,7 @@ class _SignInPageState extends State<SignInPage> {
                             bgColor: AppColors.primaryBackground,
                             titleColor: AppColors.primaryElement,
                             onTap: () async {
-                              Navigator.of(context)
-                                  .pushNamed(SignUpPage.routeName);
+                              Navigator.of(context).pushNamed(AppRoutes.signUp);
                             },
                           ),
                         ],

@@ -2,7 +2,6 @@ import '../../app/exports.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
-  static const String routeName = '/';
 
   @override
   State<WelcomePage> createState() => _WelcomePageState();
@@ -135,7 +134,7 @@ class _WelcomePageState extends State<WelcomePage> {
             } else {
               Navigator.pushNamedAndRemoveUntil(
                 context,
-                SignInPage.routeName,
+                AppRoutes.signIn,
                 (_) => false,
               );
             }

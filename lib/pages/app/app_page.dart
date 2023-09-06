@@ -2,7 +2,6 @@ import '../../app/exports.dart';
 
 class AppPage extends StatefulWidget {
   const AppPage({super.key});
-  static const String routeName = '/app';
 
   @override
   State<AppPage> createState() => _AppPageState();
