@@ -35,6 +35,14 @@ class SignInC {
           User? user = credential.user;
           if (user != null) {
             // auth done
+            Global.localStorage.setStringData(
+              key: SharedPrefsKeys.userTokenKey,
+              value: user.uid,
+            );
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.application,
+              (route) => false,
+            );
           } else {
             toastInfo(msg: 'Currently you are not a user of this app');
           }

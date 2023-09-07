@@ -19,20 +19,53 @@ class AppPages {
     ),
     PageEntity(
       route: AppRoutes.application,
-      page: const WelcomePage(),
-      bloc: BlocProvider(create: (_) => WelcomeBloc()),
+      page: const AppPage(),
+      bloc: BlocProvider(create: (_) => AppBloc()),
     ),
   ];
 
   static List<dynamic> allBlocProviders(BuildContext context) =>
       routes.map((route) => route.bloc).toList();
 
-  static MaterialPageRoute generateRouteSettings(RouteSettings settings) =>
-      MaterialPageRoute(
+  static MaterialPageRoute generateRouteSettings(RouteSettings settings) {
+    if (settings.name != null) {
+      bool hasSeenOnBoarding =
+          Global.localStorage.getBoolData(SharedPrefsKeys.hasSeenOnBoarding) ??
+              false;
+      if (settings.name == AppRoutes.initial && hasSeenOnBoarding) {
+        // TODO check if user has logged in
+        // String? userToken =
+        //     Global.localStorage.getStringData(SharedPrefsKeys.userTokenKey);
+        // if (FirebaseAuth.instance.currentUser == null ||
+        //     userToken == null ||
+        //     userToken == '') {
+        //   return MaterialPageRoute(
+        //     builder: (_) => routes
+        //         .firstWhere((route) => route.route == AppRoutes.signIn)
+        //         .page,
+        //     settings: settings,
+        //   );
+        // }
+        return MaterialPageRoute(
+          builder: (_) => routes
+              .firstWhere((route) => route.route == AppRoutes.application)
+              .page,
+          settings: settings,
+        );
+      }
+      return MaterialPageRoute(
         builder: (_) =>
             routes.firstWhere((route) => route.route == settings.name).page,
         settings: settings,
       );
+    } else {
+      return MaterialPageRoute(
+        builder: (_) =>
+            routes.firstWhere((route) => route.route == AppRoutes.initial).page,
+        settings: settings,
+      );
+    }
+  }
 }
 
 // unify bloc providers with routes and pages

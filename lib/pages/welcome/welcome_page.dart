@@ -1,3 +1,5 @@
+import 'package:learn_ai/app/values/constants.dart';
+
 import '../../app/exports.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -132,9 +134,11 @@ class _WelcomePageState extends State<WelcomePage> {
                 curve: Curves.decelerate,
               );
             } else {
+              Global.localStorage.setBoolData(
+                  key: SharedPrefsKeys.hasSeenOnBoarding, value: true);
               Navigator.pushNamedAndRemoveUntil(
                 context,
-                AppRoutes.signIn,
+                AppRoutes.application,
                 (_) => false,
               );
             }
