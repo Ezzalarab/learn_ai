@@ -6,7 +6,7 @@ class CustomButton extends StatelessWidget {
     required this.title,
     this.bgColor = AppColors.primaryElement,
     this.titleColor = AppColors.primaryBackground,
-    this.borderColor = AppColors.primaryThreeElementText,
+    this.borderColor = AppColors.primaryThirdElementText,
     this.onTap,
   });
   final String title;

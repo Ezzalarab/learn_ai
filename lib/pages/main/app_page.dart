@@ -151,7 +151,7 @@ class _AppPageState extends State<AppPage> {
 
   Widget _buildPage(int index) {
     List<Widget> widgets = const [
-      Center(child: Text('home')),
+      HomePage(),
       Center(child: Text('search')),
       Center(child: Text('course')),
       Center(child: Text('chat')),
