@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
               text: 'Ezzalarab',
             ),
             HomeSearchBar(),
+            MenuView(),
           ],
         ),
       ),

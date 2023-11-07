@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [...AppPages.allBlocProviders(context)],
       child: ScreenUtilInit(
-        designSize: const Size(365, 800),
+        designSize: const Size(AppConstants.appWidth, AppConstants.appHight),
         builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Learn AI',

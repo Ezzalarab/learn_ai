@@ -1,4 +1,7 @@
-class AppConstants {}
+class AppConstants {
+  static const double appWidth = 385;
+  static const double appHight = 800;
+}
 
 class SharedPrefsKeys {
   static const String hasSeenOnBoarding = 'has_seen_on_boarding';

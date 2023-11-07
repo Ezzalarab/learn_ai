@@ -3,7 +3,7 @@ import '../../../app/exports.dart';
 AppBar buildAppBar() {
   return AppBar(
     title: Container(
-      margin: EdgeInsets.symmetric(horizontal: 7.w),
+      margin: EdgeInsets.symmetric(horizontal: 7.w, vertical: 10.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -15,8 +15,8 @@ AppBar buildAppBar() {
           ),
           GestureDetector(
             child: Container(
-              width: 40.w,
-              height: 40,
+              width: 20.w,
+              height: 20.w,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
