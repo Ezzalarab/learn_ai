@@ -22,6 +22,11 @@ class AppPages {
       page: const AppPage(),
       bloc: BlocProvider(create: (_) => AppBloc()),
     ),
+    PageEntity(
+      route: AppRoutes.application,
+      page: const HomePage(),
+      bloc: BlocProvider(create: (_) => HomePageBloc()),
+    ),
   ];
 
   static List<dynamic> allBlocProviders(BuildContext context) =>

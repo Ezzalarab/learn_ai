@@ -5,21 +5,49 @@ class MenuView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 20.h),
-          width: 385.w,
-          height: 160.h,
-          child: PageView(
-            children: const [
-              SliderItem(imagePath: 'assets/icons/art.png'),
-              SliderItem(imagePath: 'assets/icons/Image(1).png'),
-              SliderItem(imagePath: 'assets/icons/Image(2).png'),
-            ],
+    return SliverToBoxAdapter(
+      child: Column(
+        children: [
+          Container(
+            width: 325.w,
+            margin: EdgeInsets.only(top: 15.h),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const MenuText('Chose your course'),
+                GestureDetector(
+                  onTap: () {},
+                  child: MenuText(
+                    'See all',
+                    fontWeight: FontWeight.normal,
+                    color: AppColors.primaryThirdElementText,
+                    size: 12.sp,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+          Container(
+            margin: EdgeInsets.only(top: 20.h),
+            child: const Row(
+              children: [
+                MenuTabTitle(
+                  title: 'All',
+                  selected: true,
+                ),
+                MenuTabTitle(
+                  title: 'Papular',
+                  selected: false,
+                ),
+                MenuTabTitle(
+                  title: 'Newest',
+                  selected: false,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

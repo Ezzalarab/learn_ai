@@ -13,14 +13,16 @@ class HeaderText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: topMargin.h),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: textColor,
-          fontWeight: FontWeight.bold,
-          fontSize: 24.sp,
+    return SliverToBoxAdapter(
+      child: Container(
+        margin: EdgeInsets.only(top: topMargin.h),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: textColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 24.sp,
+          ),
         ),
       ),
     );

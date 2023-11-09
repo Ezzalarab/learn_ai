@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import '../../app/exports.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,9 +15,9 @@ class _HomePageState extends State<HomePage> {
       appBar: buildAppBar(),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 25.w),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+        child: const CustomScrollView(
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          slivers: [
             HeaderText(
               text: 'Hello',
               textColor: AppColors.primaryThirdElementText,
@@ -28,7 +27,9 @@ class _HomePageState extends State<HomePage> {
               text: 'Ezzalarab',
             ),
             HomeSearchBar(),
+            SliderView(),
             MenuView(),
+            CoursesGridView(),
           ],
         ),
       ),
