@@ -1,6 +1,6 @@
 import '../../../app/exports.dart';
 
-AppBar homeAppBar() {
+AppBar profileAppBar() {
   return AppBar(
     title: Container(
       margin: EdgeInsets.symmetric(horizontal: 7.w, vertical: 10.h),
@@ -12,6 +12,14 @@ AppBar homeAppBar() {
             width: 15.w,
             height: 12.h,
             child: Image.asset('assets/icons/menu.png'),
+          ),
+          Text(
+            'Profile',
+            style: TextStyle(
+              color: AppColors.primaryText,
+              fontSize: 18.sp,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           GestureDetector(
             onTap: () {
@@ -27,7 +35,7 @@ AppBar homeAppBar() {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                    'assets/icons/person.png',
+                    'assets/icons/more-vertical.png',
                   ),
                 ),
               ),

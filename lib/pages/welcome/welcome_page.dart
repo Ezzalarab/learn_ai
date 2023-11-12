@@ -135,12 +135,26 @@ class _WelcomePageState extends State<WelcomePage> {
               );
             } else {
               Global.localStorage.setBoolData(
-                  key: SharedPrefsKeys.hasSeenOnBoarding, value: true);
-              Navigator.pushNamedAndRemoveUntil(
-                context,
-                AppRoutes.application,
-                (_) => false,
+                key: SharedPrefsKeys.hasSeenOnBoarding,
+                value: true,
               );
+              String? userToken = Global.localStorage
+                  .getStringData(SharedPrefsKeys.userTokenKey);
+              if (FirebaseAuth.instance.currentUser == null ||
+                  userToken == null ||
+                  userToken == '') {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  AppRoutes.signIn,
+                  (_) => false,
+                );
+              } else {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  AppRoutes.application,
+                  (_) => false,
+                );
+              }
             }
           },
         ),

@@ -155,7 +155,7 @@ class _AppPageState extends State<AppPage> {
       Center(child: Text('search')),
       Center(child: Text('course')),
       Center(child: Text('chat')),
-      Center(child: Text('profile')),
+      ProfilePage(),
     ];
     return widgets[index];
   }

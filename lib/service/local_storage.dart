@@ -28,4 +28,8 @@ class LocalStorage {
   bool? getBoolData(String key) {
     return _prefs.getBool(key);
   }
+
+  Future<void> clear(String key) async {
+    await _prefs.remove(key);
+  }
 }

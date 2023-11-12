@@ -27,6 +27,11 @@ class AppPages {
       page: const HomePage(),
       bloc: BlocProvider(create: (_) => HomePageBloc()),
     ),
+    PageEntity(
+      route: AppRoutes.settings,
+      page: const SettingsPage(),
+      bloc: BlocProvider(create: (_) => SettingsBloc()),
+    ),
   ];
 
   static List<dynamic> allBlocProviders(BuildContext context) =>
@@ -37,26 +42,28 @@ class AppPages {
       bool hasSeenOnBoarding =
           Global.localStorage.getBoolData(SharedPrefsKeys.hasSeenOnBoarding) ??
               false;
-      if (settings.name == AppRoutes.initial && hasSeenOnBoarding) {
-        // TODO check if user has logged in
-        // String? userToken =
-        //     Global.localStorage.getStringData(SharedPrefsKeys.userTokenKey);
-        // if (FirebaseAuth.instance.currentUser == null ||
-        //     userToken == null ||
-        //     userToken == '') {
-        //   return MaterialPageRoute(
-        //     builder: (_) => routes
-        //         .firstWhere((route) => route.route == AppRoutes.signIn)
-        //         .page,
-        //     settings: settings,
-        //   );
-        // }
-        return MaterialPageRoute(
-          builder: (_) => routes
-              .firstWhere((route) => route.route == AppRoutes.application)
-              .page,
-          settings: settings,
-        );
+      if (settings.name == AppRoutes.initial) {
+        if (hasSeenOnBoarding) {
+          String? userToken =
+              Global.localStorage.getStringData(SharedPrefsKeys.userTokenKey);
+          if (FirebaseAuth.instance.currentUser == null ||
+              userToken == null ||
+              userToken == '') {
+            return MaterialPageRoute(
+              builder: (_) => routes
+                  .firstWhere((route) => route.route == AppRoutes.signIn)
+                  .page,
+              settings: settings,
+            );
+          } else {
+            return MaterialPageRoute(
+              builder: (_) => routes
+                  .firstWhere((route) => route.route == AppRoutes.application)
+                  .page,
+              settings: settings,
+            );
+          }
+        }
       }
       return MaterialPageRoute(
         builder: (_) =>
@@ -64,6 +71,9 @@ class AppPages {
         settings: settings,
       );
     } else {
+      if (kDebugMode) {
+        print('null route name');
+      }
       return MaterialPageRoute(
         builder: (_) =>
             routes.firstWhere((route) => route.route == AppRoutes.initial).page,

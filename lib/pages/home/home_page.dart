@@ -12,7 +12,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: buildAppBar(),
+      appBar: homeAppBar(),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 25.w),
         child: const CustomScrollView(

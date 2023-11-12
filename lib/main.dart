@@ -1,8 +1,6 @@
 import 'app/exports.dart';
 import 'app/pages.dart';
 
-// ...
-
 void main() async {
   await Global.init();
   runApp(const MyApp());
