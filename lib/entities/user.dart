@@ -55,7 +55,7 @@ class UserLoginResponseEntity {
 
 // login result
 class UserItem {
-  String? access_token;
+  String? accessToken;
   String? token;
   String? name;
   String? description;
@@ -64,7 +64,7 @@ class UserItem {
   int? type;
 
   UserItem({
-    this.access_token,
+    this.accessToken,
     this.token,
     this.name,
     this.description,
@@ -74,7 +74,7 @@ class UserItem {
   });
 
   factory UserItem.fromJson(Map<String, dynamic> json) => UserItem(
-        access_token: json["access_token"],
+        accessToken: json["access_token"],
         token: json["token"],
         name: json["name"],
         description: json["description"],
@@ -84,7 +84,7 @@ class UserItem {
       );
 
   Map<String, dynamic> toJson() => {
-        "access_token": access_token,
+        "access_token": accessToken,
         "token": token,
         "name": name,
         "description": description,

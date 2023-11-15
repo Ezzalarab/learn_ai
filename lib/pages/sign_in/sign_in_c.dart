@@ -1,4 +1,4 @@
-import 'package:learn_ai/common/widgets/flutter_toast.dart';
+import 'dart:developer';
 
 import '../../app/exports.dart';
 
@@ -34,15 +34,34 @@ class SignInC {
           }
           User? user = credential.user;
           if (user != null) {
+            // String? desplayName = user.displayName;
+            String? email = user.email;
+            String? uId = user.uid;
+            String? photoUrl = user.photoURL;
+
+            // print('user open_id $uId');
+            // print('user photoUrl $photoUrl');
+            // print(email);
+            // print(desplayName);
+
+            LoginRequestEntity loginRequestEntity = LoginRequestEntity(
+              avatar: photoUrl,
+              email: email,
+              openId: uId,
+              type: 1, // 1 = email login
+            );
+
+            await asyncPostUserLogin(loginRequestEntity);
+
             // auth done
             Global.localStorage.setStringData(
               key: SharedPrefsKeys.userTokenKey,
               value: user.uid,
             );
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              AppRoutes.application,
-              (route) => false,
-            );
+            // Navigator.of(context).pushNamedAndRemoveUntil(
+            //   AppRoutes.application,
+            //   (route) => false,
+            // );
           } else {
             toastInfo(msg: 'Currently you are not a user of this app');
           }
@@ -72,5 +91,18 @@ class SignInC {
         print(s);
       }
     }
+  }
+
+  Future<void> asyncPostUserLogin(
+    LoginRequestEntity loginRequestEntity,
+  ) async {
+    EasyLoading.show(
+      indicator: const CircularProgressIndicator(),
+      maskType: EasyLoadingMaskType.clear,
+      dismissOnTap: true,
+    );
+
+    var result = await UserApi.login(param: loginRequestEntity);
+    log(result.toString());
   }
 }
