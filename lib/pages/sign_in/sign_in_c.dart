@@ -1,11 +1,10 @@
-import 'dart:developer';
-
 import '../../app/exports.dart';
 
 class SignInC {
   final BuildContext context;
 
   const SignInC({required this.context});
+
   void handleSignIn(String type) async {
     try {
       if (type == 'email') {
@@ -21,6 +20,12 @@ class SignInC {
           return;
         }
         try {
+          EasyLoading.show(
+            indicator: const CircularProgressIndicator(),
+            maskType: EasyLoadingMaskType.clear,
+            dismissOnTap: true,
+          );
+
           final UserCredential credential =
               await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: email,
@@ -34,10 +39,19 @@ class SignInC {
           }
           User? user = credential.user;
           if (user != null) {
-            // String? desplayName = user.displayName;
+            String? desplayName = user.displayName;
             String? email = user.email;
             String? uId = user.uid;
             String? photoUrl = user.photoURL;
+
+            if (desplayName == null) {
+              desplayName = 'Ezzalarab';
+              await credential.user?.updateDisplayName(desplayName);
+            }
+            if (photoUrl == null) {
+              photoUrl = '${ApiUrls.serverApiUrl}uploads/images/defailut.png';
+              await credential.user?.updatePhotoURL(photoUrl);
+            }
 
             // print('user open_id $uId');
             // print('user photoUrl $photoUrl');
@@ -48,20 +62,14 @@ class SignInC {
               avatar: photoUrl,
               email: email,
               openId: uId,
+              name: desplayName,
               type: 1, // 1 = email login
             );
 
-            await asyncPostUserLogin(loginRequestEntity);
+            print('loginRequestEntity.toJson()');
+            print(loginRequestEntity.toJson());
 
-            // auth done
-            Global.localStorage.setStringData(
-              key: SharedPrefsKeys.userTokenKey,
-              value: user.uid,
-            );
-            // Navigator.of(context).pushNamedAndRemoveUntil(
-            //   AppRoutes.application,
-            //   (route) => false,
-            // );
+            await asyncPostUserLogin(loginRequestEntity);
           } else {
             toastInfo(msg: 'Currently you are not a user of this app');
           }
@@ -96,13 +104,35 @@ class SignInC {
   Future<void> asyncPostUserLogin(
     LoginRequestEntity loginRequestEntity,
   ) async {
-    EasyLoading.show(
-      indicator: const CircularProgressIndicator(),
-      maskType: EasyLoadingMaskType.clear,
-      dismissOnTap: true,
-    );
-
     var result = await UserApi.login(param: loginRequestEntity);
-    log(result.toString());
+
+    result.fold(
+      (failure) {
+        if (kDebugMode) {
+          print('login response failure');
+          print(failure);
+        }
+        toastInfo(msg: failure);
+        EasyLoading.dismiss();
+      },
+      (userItem) {
+        // log('userItem.toJson().toString()');
+        // log(userItem.toJson().toString());
+        // auth done
+        Global.localStorage.setStringData(
+          key: SharedPrefsKeys.userProfileKey,
+          value: jsonEncode(userItem.toJson()),
+        );
+        Global.localStorage.setStringData(
+          key: SharedPrefsKeys.userTokenKey,
+          value: userItem.accessToken,
+        );
+        EasyLoading.dismiss();
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          AppRoutes.application,
+          (route) => false,
+        );
+      },
+    );
   }
 }

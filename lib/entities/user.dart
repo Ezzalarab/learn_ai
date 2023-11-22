@@ -34,22 +34,22 @@ class LoginRequestEntity {
 }
 
 //api post response msg
-class UserLoginResponseEntity {
+class ApiResponseEntity {
   int? code;
   String? msg;
-  UserItem? data;
+  dynamic data;
 
-  UserLoginResponseEntity({
+  ApiResponseEntity({
     this.code,
     this.msg,
     this.data,
   });
 
-  factory UserLoginResponseEntity.fromJson(Map<String, dynamic> json) =>
-      UserLoginResponseEntity(
+  factory ApiResponseEntity.fromJson(Map<String, dynamic> json) =>
+      ApiResponseEntity(
         code: json["code"],
         msg: json["msg"],
-        data: UserItem.fromJson(json["data"]),
+        data: json["data"],
       );
 }
 
@@ -80,7 +80,7 @@ class UserItem {
         description: json["description"],
         avatar: json["avatar"],
         online: json["online"],
-        type: json["type"],
+        type: int.tryParse(json["type"]?.toString() ?? '0') ?? 0,
       );
 
   Map<String, dynamic> toJson() => {

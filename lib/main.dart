@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       child: ScreenUtilInit(
         designSize: const Size(AppConstants.appWidth, AppConstants.appHight),
         builder: (context, child) => MaterialApp(
+          builder: EasyLoading.init(),
           debugShowCheckedModeBanner: false,
           title: 'Learn AI',
           theme: ThemeData(

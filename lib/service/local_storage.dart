@@ -9,9 +9,13 @@ class LocalStorage {
 
   Future<bool> setStringData({
     required String key,
-    required String value,
+    required String? value,
   }) async {
-    return await _prefs.setString(key, value);
+    if (value != null) {
+      return await _prefs.setString(key, value);
+    } else {
+      return false;
+    }
   }
 
   String? getStringData(String key) {

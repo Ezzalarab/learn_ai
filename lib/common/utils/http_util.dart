@@ -1,7 +1,7 @@
-import 'package:dio/dio.dart';
+import '../../app/exports.dart';
 
 class HttpUtil {
-  static HttpUtil _instance = HttpUtil._internal();
+  static final HttpUtil _instance = HttpUtil._internal();
   factory HttpUtil() {
     return _instance;
   }
@@ -9,7 +9,7 @@ class HttpUtil {
   late Dio dio;
   HttpUtil._internal() {
     BaseOptions requestOptions = BaseOptions(
-      baseUrl: 'http:127.0.0.1:8000',
+      baseUrl: ApiUrls.serverApiUrl,
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
       headers: {},
@@ -20,17 +20,16 @@ class HttpUtil {
     dio = Dio(requestOptions);
   }
 
-  Future<dynamic> post(
+  Future<Response> post(
     String path, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
   }) async {
-    var response = await dio.post(
+    Response response = await dio.post(
       path,
       data: data,
       queryParameters: queryParameters,
     );
-
-    return response.data;
+    return response;
   }
 }
