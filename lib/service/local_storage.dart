@@ -1,4 +1,4 @@
-import 'package:shared_preferences/shared_preferences.dart';
+import '../app/exports.dart';
 
 class LocalStorage {
   late final SharedPreferences _prefs;
@@ -35,5 +35,13 @@ class LocalStorage {
 
   Future<void> clear(String key) async {
     await _prefs.remove(key);
+  }
+
+  UserItem? getUserProfile() {
+    String? localProfile = _prefs.getString(SharedPrefsKeys.userProfileKey);
+    if (localProfile != null) {
+      return UserItem.fromJson(jsonDecode(localProfile));
+    }
+    return null;
   }
 }

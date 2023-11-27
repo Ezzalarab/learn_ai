@@ -1,6 +1,18 @@
 import '../../../app/exports.dart';
 
-AppBar homeAppBar() {
+AppBar homeAppBar({String? avatarUrl}) {
+  ImageProvider image;
+  print('avatarUrl');
+  print(avatarUrl);
+  if (avatarUrl?.isNotEmpty ?? false) {
+    image = NetworkImage(
+      avatarUrl!,
+    );
+  } else {
+    image = const AssetImage(
+      'assets/icons/person.png',
+    );
+  }
   return AppBar(
     title: Container(
       margin: EdgeInsets.symmetric(horizontal: 7.w, vertical: 10.h),
@@ -24,11 +36,9 @@ AppBar homeAppBar() {
             child: Container(
               width: 20.w,
               height: 20.w,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(
-                    'assets/icons/person.png',
-                  ),
+                  image: image,
                 ),
               ),
             ),

@@ -17,7 +17,7 @@ class HomeSearchBar extends StatelessWidget {
                 color: AppColors.primaryBackground,
                 borderRadius: BorderRadius.circular(15.w),
                 border: Border.all(
-                  color: AppColors.primaryFourthElementText,
+                  color: AppColors.secondaryElementText,
                 ),
               ),
               child: Row(
@@ -54,7 +54,7 @@ class HomeSearchBar extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(width: 5.w),
+            SizedBox(width: 10.w),
             GestureDetector(
               onTap: () {},
               child: Container(

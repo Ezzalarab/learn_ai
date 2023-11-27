@@ -27,7 +27,7 @@ class CoursesGridView extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.w),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     fit: BoxFit.fill,
                     image: AssetImage(
                       'assets/icons/Image(1).png',

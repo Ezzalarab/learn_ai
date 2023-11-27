@@ -14,6 +14,8 @@ export 'package:learn_ai/common/utils/http_util.dart';
 export 'package:dio/dio.dart';
 export 'package:learn_ai/app/values/api_urls.dart';
 export 'dart:convert';
+export 'package:shared_preferences/shared_preferences.dart';
+export 'package:learn_ai/pages/home/home_page_c.dart';
 
 export '../common/widgets/custom_button.dart';
 export '../common/widgets/custom_text_field.dart';

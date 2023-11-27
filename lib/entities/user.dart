@@ -73,15 +73,19 @@ class UserItem {
     this.type,
   });
 
-  factory UserItem.fromJson(Map<String, dynamic> json) => UserItem(
-        accessToken: json["access_token"],
-        token: json["token"],
-        name: json["name"],
-        description: json["description"],
-        avatar: json["avatar"],
-        online: json["online"],
-        type: int.tryParse(json["type"]?.toString() ?? '0') ?? 0,
-      );
+  factory UserItem.fromJson(Map<String, dynamic> json) {
+    print('user item json');
+    print(json);
+    return UserItem(
+      accessToken: json["access_token"],
+      token: json["token"],
+      name: json["name"],
+      description: json["description"],
+      avatar: json["avatar"],
+      online: json["online"],
+      type: json["type"] == null ? null : int.tryParse(json["type"].toString()),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "access_token": accessToken,

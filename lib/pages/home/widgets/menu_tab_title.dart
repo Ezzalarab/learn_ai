@@ -33,7 +33,7 @@ class MenuTabTitle extends StatelessWidget {
           title,
           color: selected
               ? AppColors.primaryElementText
-              : AppColors.primaryThirdElementText,
+              : AppColors.fourthElementText,
           fontWeight: FontWeight.normal,
           size: selected ? 16 : 14,
         ),

@@ -20,7 +20,7 @@ class MenuView extends StatelessWidget {
                   child: MenuText(
                     'See all',
                     fontWeight: FontWeight.normal,
-                    color: AppColors.primaryThirdElementText,
+                    color: AppColors.thirdElementText,
                     size: 12.sp,
                   ),
                 ),

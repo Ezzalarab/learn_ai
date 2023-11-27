@@ -49,7 +49,7 @@ class SignInC {
               await credential.user?.updateDisplayName(desplayName);
             }
             if (photoUrl == null) {
-              photoUrl = '${ApiUrls.serverApiUrl}uploads/images/defailut.png';
+              photoUrl = '${ApiUrls.serverApiUrl}/uploads/images/default.png';
               await credential.user?.updatePhotoURL(photoUrl);
             }
 
@@ -78,6 +78,7 @@ class SignInC {
             print(e);
             print(s);
           }
+          EasyLoading.dismiss();
           if (e.code == 'user-not-found') {
             print('No user found for that email.');
             toastInfo(msg: 'No user found for that email.');

@@ -29,7 +29,7 @@ class SliderView extends StatelessWidget {
                 dotsCount: 3,
                 position: state.carouselIndex,
                 decorator: DotsDecorator(
-                  color: AppColors.primaryFourthElementText,
+                  color: AppColors.secondaryElementText,
                   activeColor: AppColors.primaryElement,
                   size: const Size.square(5.0),
                   activeSize: const Size(20.0, 5.0),
