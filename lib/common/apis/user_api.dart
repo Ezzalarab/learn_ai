@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:learn_ai/app/extensions.dart';
+import '../../app/extensions.dart';
 
 import '../../app/exports.dart';
 

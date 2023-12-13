@@ -125,7 +125,7 @@ class SignInC {
           value: jsonEncode(userItem.toJson()),
         );
         Global.localStorage.setStringData(
-          key: SharedPrefsKeys.userTokenKey,
+          key: SharedPrefsKeys.userAccessTokenKey,
           value: userItem.accessToken,
         );
         EasyLoading.dismiss();

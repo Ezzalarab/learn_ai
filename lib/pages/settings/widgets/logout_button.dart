@@ -8,7 +8,7 @@ class LogoutButton extends StatelessWidget {
   Future<void> removeUserData() async {
     FirebaseAuth.instance.signOut();
     Global.localStorage.clear(SharedPrefsKeys.userProfileKey);
-    Global.localStorage.clear(SharedPrefsKeys.userTokenKey);
+    Global.localStorage.clear(SharedPrefsKeys.userAccessTokenKey);
   }
 
   @override

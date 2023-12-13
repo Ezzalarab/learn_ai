@@ -24,12 +24,26 @@ class HttpUtil {
     String path, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
+    Options? options,
   }) async {
+    Options? requestOptions = options ?? Options();
+    requestOptions.headers = requestOptions.headers ?? {};
+    requestOptions.headers!.addAll(getAuthHeader());
     Response response = await dio.post(
       path,
       data: data,
       queryParameters: queryParameters,
+      options: requestOptions,
     );
     return response;
+  }
+
+  Map<String, dynamic> getAuthHeader() {
+    Map<String, dynamic> headers = {};
+    String? accessToken = Global.localStorage.getUserAccessToken();
+    if (accessToken != null) {
+      headers['Authorization'] = 'Bearer $accessToken';
+    }
+    return headers;
   }
 }

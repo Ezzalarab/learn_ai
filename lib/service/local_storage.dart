@@ -44,4 +44,8 @@ class LocalStorage {
     }
     return null;
   }
+
+  String? getUserAccessToken() {
+    return _prefs.getString(SharedPrefsKeys.userAccessTokenKey);
+  }
 }

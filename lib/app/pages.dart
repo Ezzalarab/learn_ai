@@ -44,8 +44,8 @@ class AppPages {
               false;
       if (settings.name == AppRoutes.initial) {
         if (hasSeenOnBoarding) {
-          String? userToken =
-              Global.localStorage.getStringData(SharedPrefsKeys.userTokenKey);
+          String? userToken = Global.localStorage
+              .getStringData(SharedPrefsKeys.userAccessTokenKey);
           if (FirebaseAuth.instance.currentUser == null ||
               userToken == null ||
               userToken == '') {

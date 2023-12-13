@@ -1,4 +1,4 @@
-import 'package:learn_ai/app/values/constants.dart';
+import '../../app/values/constants.dart';
 
 import '../../app/exports.dart';
 
@@ -139,7 +139,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 value: true,
               );
               String? userToken = Global.localStorage
-                  .getStringData(SharedPrefsKeys.userTokenKey);
+                  .getStringData(SharedPrefsKeys.userAccessTokenKey);
               if (FirebaseAuth.instance.currentUser == null ||
                   userToken == null ||
                   userToken == '') {

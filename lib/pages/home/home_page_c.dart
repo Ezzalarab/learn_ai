@@ -6,9 +6,10 @@ class HomePageC {
 
   UserItem? userProfile = Global.localStorage.getUserProfile();
 
-  void init() {
+  void init() async {
     if (kDebugMode) {
       print('home page init . . .');
     }
+    await CourseApi.getCoursesList();
   }
 }
