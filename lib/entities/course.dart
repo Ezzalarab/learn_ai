@@ -40,7 +40,7 @@ class CourseListResponseEntity {
         data: json["data"] == null
             ? []
             : List<CourseItem>.from(
-                json["data"].map((x) => CourseItem.fromJson(x))),
+                json["data"].map((x) => CourseItem.fromMap(x))),
       );
 }
 
@@ -60,7 +60,7 @@ class CourseDetailResponseEntity {
       CourseDetailResponseEntity(
         code: json["code"],
         msg: json["msg"],
-        data: CourseItem.fromJson(json["data"]),
+        data: CourseItem.fromMap(json["data"]),
       );
 }
 
@@ -152,7 +152,7 @@ class CourseItem {
   String? description;
   String? thumbnail;
   String? video;
-  String? price;
+  double? price;
   String? amount_total;
   int? lesson_num;
   int? video_len;
@@ -177,23 +177,23 @@ class CourseItem {
     this.id,
   });
 
-  factory CourseItem.fromJson(Map<String, dynamic> json) => CourseItem(
-        user_token: json["user_token"],
-        name: json["name"],
-        description: json["description"],
-        thumbnail: json["thumbnail"],
-        video: json["video"],
-        price: json["price"],
-        amount_total: json["amount_total"],
-        lesson_num: json["lesson_num"],
-        video_len: json["video_len"],
-        down_num: json["down_num"],
-        follow: json["follow"],
-        score: json["score"],
-        id: json["id"],
+  factory CourseItem.fromMap(Map<String, dynamic> map) => CourseItem(
+        user_token: map["user_token"],
+        name: map["name"],
+        description: map["description"],
+        thumbnail: map["thumbnail"],
+        video: map["video"],
+        price: double.tryParse((map["price"] ?? 0).toString()) ?? 0,
+        amount_total: map["amount_total"],
+        lesson_num: map["lessons_count"],
+        video_len: map["video_len"],
+        down_num: map["down_num"],
+        follow: map["follow"],
+        score: map["score"],
+        id: map["id"],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toMap() => {
         "user_token": user_token,
         "name": name,
         "description": description,
@@ -201,7 +201,7 @@ class CourseItem {
         "video": video,
         "price": price,
         "amount_total": amount_total,
-        "lesson_num": lesson_num,
+        "lessons_count": lesson_num,
         "video_len": video_len,
         "down_num": down_num,
         "follow": follow,

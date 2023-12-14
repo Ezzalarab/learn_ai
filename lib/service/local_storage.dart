@@ -40,7 +40,7 @@ class LocalStorage {
   UserItem? getUserProfile() {
     String? localProfile = _prefs.getString(SharedPrefsKeys.userProfileKey);
     if (localProfile != null) {
-      return UserItem.fromJson(jsonDecode(localProfile));
+      return UserItem.fromMap(jsonDecode(localProfile));
     }
     return null;
   }

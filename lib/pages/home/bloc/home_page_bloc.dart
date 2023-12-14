@@ -9,6 +9,7 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
           carouselIndex: 0,
         )) {
     on<ChangeCarouselIndex>(_changeCarouselIndex);
+    on<SetCoursesList>(_getCoursesList);
   }
 
   Future<void> _changeCarouselIndex(
@@ -17,6 +18,15 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   ) async {
     emit(state.copyWith(
       carouselIndex: event.currentIndex,
+    ));
+  }
+
+  Future<void> _getCoursesList(
+    SetCoursesList event,
+    Emitter<HomePageState> emit,
+  ) async {
+    emit(state.copyWith(
+      coursesList: event.coursesList,
     ));
   }
 }

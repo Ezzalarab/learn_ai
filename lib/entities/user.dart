@@ -34,25 +34,6 @@ class LoginRequestEntity {
 }
 
 //api post response msg
-class ApiResponseEntity {
-  int? code;
-  String? msg;
-  dynamic data;
-
-  ApiResponseEntity({
-    this.code,
-    this.msg,
-    this.data,
-  });
-
-  factory ApiResponseEntity.fromJson(Map<String, dynamic> json) =>
-      ApiResponseEntity(
-        code: json["code"],
-        msg: json["msg"],
-        data: json["data"],
-      );
-}
-
 // login result
 class UserItem {
   String? accessToken;
@@ -73,7 +54,7 @@ class UserItem {
     this.type,
   });
 
-  factory UserItem.fromJson(Map<String, dynamic> json) {
+  factory UserItem.fromMap(Map<String, dynamic> json) {
     print('user item json');
     print(json);
     return UserItem(

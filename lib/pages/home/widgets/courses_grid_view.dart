@@ -1,9 +1,9 @@
 import '../../../app/exports.dart';
 
 class CoursesGridView extends StatelessWidget {
-  const CoursesGridView({
-    super.key,
-  });
+  const CoursesGridView(this.coursesList, {super.key});
+
+  final List<CourseItem> coursesList;
 
   @override
   Widget build(BuildContext context) {
@@ -20,56 +20,11 @@ class CoursesGridView extends StatelessWidget {
           crossAxisCount: 2,
         ),
         delegate: SliverChildBuilderDelegate(
-          childCount: 20,
+          childCount: coursesList.length,
           (context, index) {
             return GestureDetector(
               onTap: () {},
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.w),
-                  image: const DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(
-                      'assets/icons/Image(1).png',
-                    ),
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(left: 10.w),
-                      child: Text(
-                        'Best course for IT',
-                        maxLines: 1,
-                        style: TextStyle(
-                          color: AppColors.primaryElementText,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.sp,
-                          overflow: TextOverflow.fade,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(
-                        left: 10.w,
-                        bottom: 10.h,
-                      ),
-                      child: Text(
-                        'Flutter best course',
-                        maxLines: 1,
-                        style: TextStyle(
-                          color: AppColors.primaryElementText,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 12.sp,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              child: CourseCard(coursesList[index]),
             );
           },
         ),

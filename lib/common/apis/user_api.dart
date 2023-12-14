@@ -13,8 +13,8 @@ class UserApi {
       );
       if (response.statusCode?.isSuccessfulStatusCode ?? false) {
         ApiResponseEntity apiResponseEntity =
-            ApiResponseEntity.fromJson(response.data);
-        UserItem userItem = UserItem.fromJson(apiResponseEntity.data);
+            ApiResponseEntity.fromMap(response.data);
+        UserItem userItem = UserItem.fromMap(apiResponseEntity.data);
         return Right(userItem);
       } else {
         return Left(response.data.toString());

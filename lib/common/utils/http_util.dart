@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import '../../app/exports.dart';
 
 class HttpUtil {
@@ -45,5 +47,38 @@ class HttpUtil {
       headers['Authorization'] = 'Bearer $accessToken';
     }
     return headers;
+  }
+
+  static String getApiErrorMessage(Response response) {
+    Map<String, dynamic>? responseBodyMap;
+    ApiResponseEntity? apiResponse;
+    if (response.data != null) {
+      if (response.data is String) {
+        responseBodyMap = jsonDecode(response.data);
+      }
+      try {
+        if (responseBodyMap != null) {
+          apiResponse = ApiResponseEntity.fromMap(responseBodyMap);
+        }
+      } catch (e, s) {
+        if (kDebugMode) {
+          log('error with getting api error message');
+          log(e.toString());
+          print(s);
+        }
+      }
+    }
+    if (apiResponse != null) {
+      return apiResponse.msg ?? apiResponse.data.toString();
+    }
+    return response.data.toString();
+  }
+
+  static Map<String, dynamic>? getBodyMap(dynamic data) {
+    if (data is Map<String, dynamic>) return data;
+    if (data is String) {
+      data = jsonDecode(data);
+    }
+    return null;
   }
 }

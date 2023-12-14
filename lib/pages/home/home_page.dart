@@ -23,25 +23,29 @@ class _HomePageState extends State<HomePage> {
       appBar: homeAppBar(
         avatarUrl: _homePageC.userProfile?.avatar,
       ),
-      body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 25.w),
-        child: CustomScrollView(
-          // crossAxisAlignment: CrossAxisAlignment.start,
-          slivers: [
-            const HeaderText(
-              text: 'Hello',
-              textColor: AppColors.secondaryElementText,
-              topMargin: 20,
+      body: BlocBuilder<HomePageBloc, HomePageState>(
+        builder: (context, state) {
+          return Container(
+            margin: EdgeInsets.symmetric(horizontal: 25.w),
+            child: CustomScrollView(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              slivers: [
+                const HeaderText(
+                  text: 'Hello',
+                  textColor: AppColors.secondaryElementText,
+                  topMargin: 20,
+                ),
+                HeaderText(
+                  text: _homePageC.userProfile?.name ?? 'Learner',
+                ),
+                const HomeSearchBar(),
+                const SliderView(),
+                const MenuView(),
+                CoursesGridView(state.coursesList),
+              ],
             ),
-            HeaderText(
-              text: _homePageC.userProfile?.name ?? 'Learner',
-            ),
-            const HomeSearchBar(),
-            const SliderView(),
-            const MenuView(),
-            const CoursesGridView(),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
