@@ -1,4 +1,10 @@
 part of 'course_details_bloc.dart';
 
-@immutable
-sealed class CourseDetailsEvent {}
+sealed class CourseDetailsEvent {
+  const CourseDetailsEvent();
+}
+
+class GetCourseDetails extends CourseDetailsEvent {
+  final String courseId;
+  const GetCourseDetails(this.courseId);
+}

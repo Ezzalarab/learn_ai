@@ -3,10 +3,17 @@ import 'dart:developer';
 import '../../app/exports.dart';
 
 class HomePageC {
-  final BuildContext context;
-  HomePageC(this.context);
+  late BuildContext context;
 
-  UserItem? userProfile = Global.localStorage.getUserProfile();
+  HomePageC._internal();
+  static final HomePageC _singleton = HomePageC._internal();
+
+  factory HomePageC(BuildContext context) {
+    _singleton.context = context;
+    return _singleton;
+  }
+
+  UserItem? get userProfile => Global.localStorage.getUserProfile();
 
   Future<void> init() async {
     if (kDebugMode) {

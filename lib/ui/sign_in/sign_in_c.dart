@@ -70,6 +70,9 @@ class SignInC {
             print(loginRequestEntity.toJson());
 
             await asyncPostUserLogin(loginRequestEntity);
+            if (context.mounted) {
+              await HomePageC(context).init();
+            }
           } else {
             toastInfo(msg: 'Currently you are not a user of this app');
           }

@@ -23,7 +23,7 @@ class AppPages {
       bloc: BlocProvider(create: (_) => AppBloc()),
     ),
     PageEntity(
-      route: AppRoutes.application,
+      route: AppRoutes.homePage,
       page: const HomePage(),
       bloc: BlocProvider(create: (_) => HomePageBloc()),
     ),
@@ -31,6 +31,11 @@ class AppPages {
       route: AppRoutes.settings,
       page: const SettingsPage(),
       bloc: BlocProvider(create: (_) => SettingsBloc()),
+    ),
+    PageEntity(
+      route: AppRoutes.courseDetails,
+      page: const CourseDetailsPage(),
+      bloc: BlocProvider(create: (_) => CourseDetailsBloc()),
     ),
   ];
 

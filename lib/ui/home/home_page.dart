@@ -8,12 +8,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late HomePageC _homePageC;
+  late UserItem _userProfile;
   @override
   void initState() {
     super.initState();
-    _homePageC = HomePageC(context);
-    _homePageC.init();
+    _userProfile = HomePageC(context).userProfile ?? UserItem.empty;
   }
 
   @override
@@ -21,10 +20,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: homeAppBar(
-        avatarUrl: _homePageC.userProfile?.avatar,
+        avatarUrl: _userProfile.avatar,
       ),
       body: BlocBuilder<HomePageBloc, HomePageState>(
         builder: (context, state) {
+          if (state.coursesList.isEmpty) {
+            print('list is empty');
+            HomePageC(context).init();
+          }
           return Container(
             margin: EdgeInsets.symmetric(horizontal: 25.w),
             child: CustomScrollView(
@@ -36,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                   topMargin: 20,
                 ),
                 HeaderText(
-                  text: _homePageC.userProfile?.name ?? 'Learner',
+                  text: _userProfile.name ?? 'Learner',
                 ),
                 const HomeSearchBar(),
                 const SliderView(),

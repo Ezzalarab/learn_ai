@@ -1,6 +1,9 @@
 part of 'course_details_bloc.dart';
 
-@immutable
-sealed class CourseDetailsState {}
+sealed class CourseDetailsState {
+  const CourseDetailsState();
+}
 
-final class CourseDetailsInitial extends CourseDetailsState {}
+final class CourseDetailsInitial extends CourseDetailsState {
+  const CourseDetailsInitial();
+}

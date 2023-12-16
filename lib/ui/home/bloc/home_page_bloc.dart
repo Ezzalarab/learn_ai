@@ -9,7 +9,7 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
           carouselIndex: 0,
         )) {
     on<ChangeCarouselIndex>(_changeCarouselIndex);
-    on<SetCoursesList>(_getCoursesList);
+    on<SetCoursesList>(_setCoursesList);
   }
 
   Future<void> _changeCarouselIndex(
@@ -21,7 +21,7 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
     ));
   }
 
-  Future<void> _getCoursesList(
+  Future<void> _setCoursesList(
     SetCoursesList event,
     Emitter<HomePageState> emit,
   ) async {

@@ -23,7 +23,15 @@ class CoursesGridView extends StatelessWidget {
           childCount: coursesList.length,
           (context, index) {
             return GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  AppRoutes.courseDetails,
+                  arguments: {
+                    'courseId': coursesList[index].id,
+                  },
+                );
+              },
               child: CourseCard(coursesList[index]),
             );
           },

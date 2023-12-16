@@ -77,6 +77,8 @@ class UserItem {
         "online": online,
         "type": type,
       };
+
+  static UserItem empty = UserItem();
 }
 
 class UserData {
