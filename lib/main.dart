@@ -1,5 +1,5 @@
 import 'app/exports.dart';
-import 'app/pages.dart';
+import 'app/routes/pages.dart';
 
 void main() async {
   await Global.init();

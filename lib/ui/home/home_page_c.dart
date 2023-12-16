@@ -23,7 +23,8 @@ class HomePageC {
         },
       );
     } else {
-      Fluttertoast.showToast(msg: 'يجب تسجيل الدخول أولاً');
+      // Fluttertoast.showToast(msg: 'يجب تسجيل الدخول أولاً');
+      print('user has logged out');
     }
   }
 }

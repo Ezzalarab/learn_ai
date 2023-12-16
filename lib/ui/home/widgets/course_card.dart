@@ -27,7 +27,7 @@ class CourseCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(left: 10.w),
             child: Text(
-              'Best course for IT',
+              course.name ?? 'unknown',
               maxLines: 1,
               style: TextStyle(
                 color: AppColors.primaryElementText,
@@ -43,7 +43,7 @@ class CourseCard extends StatelessWidget {
               bottom: 10.h,
             ),
             child: Text(
-              'Flutter best course',
+              (course.lessonsCount ?? 0).toString(),
               maxLines: 1,
               style: TextStyle(
                 color: AppColors.primaryElementText,

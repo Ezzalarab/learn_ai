@@ -25,6 +25,9 @@ class LogoutButton extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       context.read<AppBloc>().add(const AppPageIndexChanged(0));
+                      context
+                          .read<HomePageBloc>()
+                          .add(const ChangeCarouselIndex(0));
                       removeUserData();
                       Navigator.of(context).pop();
                       Navigator.pushNamedAndRemoveUntil(

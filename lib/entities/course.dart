@@ -154,7 +154,7 @@ class CourseItem {
   String? video;
   double? price;
   String? amount_total;
-  int? lesson_num;
+  int? lessonsCount;
   int? video_len;
   int? down_num;
   int? follow;
@@ -169,7 +169,7 @@ class CourseItem {
     this.video,
     this.price,
     this.amount_total,
-    this.lesson_num,
+    this.lessonsCount,
     this.video_len,
     this.down_num,
     this.follow,
@@ -185,7 +185,7 @@ class CourseItem {
         video: map["video"],
         price: double.tryParse((map["price"] ?? 0).toString()) ?? 0,
         amount_total: map["amount_total"],
-        lesson_num: map["lessons_count"],
+        lessonsCount: map["lessons_count"],
         video_len: map["video_len"],
         down_num: map["down_num"],
         follow: map["follow"],
@@ -201,7 +201,7 @@ class CourseItem {
         "video": video,
         "price": price,
         "amount_total": amount_total,
-        "lessons_count": lesson_num,
+        "lessons_count": lessonsCount,
         "video_len": video_len,
         "down_num": down_num,
         "follow": follow,
