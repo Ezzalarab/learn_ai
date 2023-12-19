@@ -54,7 +54,7 @@ class LogoutButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20.w),
           image: const DecorationImage(
             image: AssetImage(
-              'assets/icons/Logout.png',
+              '${LocalPath.icons}Logout.png',
             ),
           ),
         ),

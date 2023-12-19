@@ -20,20 +20,15 @@ class MenuTabTitle extends StatelessWidget {
           vertical: 5.h,
         ),
         decoration: BoxDecoration(
-          color:
-              selected ? AppColors.primaryElement : AppColors.primaryBackground,
+          color: selected ? AppColors.primaryElement : AppColors.primaryBg,
           borderRadius: BorderRadius.circular(7.w),
           border: Border.all(
-            color: selected
-                ? AppColors.primaryElement
-                : AppColors.primaryBackground,
+            color: selected ? AppColors.primaryElement : AppColors.primaryBg,
           ),
         ),
         child: MenuText(
           title,
-          color: selected
-              ? AppColors.primaryElementText
-              : AppColors.fourthElementText,
+          color: selected ? AppColors.white : AppColors.greyC,
           fontWeight: FontWeight.normal,
           size: selected ? 16 : 14,
         ),

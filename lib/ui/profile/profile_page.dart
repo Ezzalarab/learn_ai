@@ -7,7 +7,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.primaryBackground,
+        backgroundColor: AppColors.primaryBg,
         appBar: profileAppBar(),
         body: const SingleChildScrollView(
           child: Center(
@@ -19,23 +19,23 @@ class ProfilePage extends StatelessWidget {
                   buttonsList: [
                     {
                       'title': 'Settings',
-                      'icon': 'assets/icons/settings.png',
+                      'icon': '${LocalPath.icons}settings.png',
                     },
                     {
                       'title': 'Payment details',
-                      'icon': 'assets/icons/credit-card.png',
+                      'icon': '${LocalPath.icons}credit-card.png',
                     },
                     {
                       'title': 'Achievements',
-                      'icon': 'assets/icons/award.png',
+                      'icon': '${LocalPath.icons}award.png',
                     },
                     {
                       'title': 'Favorites',
-                      'icon': 'assets/icons/heart(1).png',
+                      'icon': '${LocalPath.icons}heart(1).png',
                     },
                     {
                       'title': 'Reminders',
-                      'icon': 'assets/icons/cube.png',
+                      'icon': '${LocalPath.icons}cube.png',
                     },
                   ],
                 ),

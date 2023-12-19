@@ -5,25 +5,27 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.title,
     this.bgColor = AppColors.primaryElement,
-    this.titleColor = AppColors.primaryBackground,
-    this.borderColor = AppColors.thirdElementText,
+    this.titleColor = AppColors.primaryBg,
+    this.borderColor = AppColors.greyB,
     this.onTap,
+    this.margin,
   });
   final String title;
   final void Function()? onTap;
   final Color bgColor, titleColor, borderColor;
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 325.w,
+        width: AppConstants.fullWidth.w,
         height: 50.h,
-        margin: EdgeInsets.symmetric(horizontal: 25.w),
+        margin: margin ?? EdgeInsets.symmetric(horizontal: 25.w),
         decoration: BoxDecoration(
           color: bgColor,
-          borderRadius: BorderRadius.circular(15.w),
+          borderRadius: BorderRadius.circular(AppConstants.largeButtonRadius.w),
           border: Border.all(
             color: borderColor,
             width: 1,

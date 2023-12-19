@@ -22,7 +22,7 @@ class _AppPageState extends State<AppPage> {
                 width: 375.2,
                 height: 58.h,
                 decoration: BoxDecoration(
-                  color: AppColors.primaryBackground,
+                  color: AppColors.primaryBg,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.h),
                     topRight: Radius.circular(20.h),
@@ -42,7 +42,7 @@ class _AppPageState extends State<AppPage> {
                   showSelectedLabels: false,
                   showUnselectedLabels: false,
                   selectedItemColor: AppColors.primaryElement,
-                  unselectedItemColor: AppColors.primaryElementText,
+                  unselectedItemColor: AppColors.white,
                   onTap: (value) {
                     context.read<AppBloc>().add(AppPageIndexChanged(value));
                   },
@@ -63,14 +63,14 @@ class _AppPageState extends State<AppPage> {
         width: 15.w,
         height: 15.w,
         child: Image.asset(
-          'assets/icons/home.png',
+          '${LocalPath.icons}home.png',
         ),
       ),
       activeIcon: SizedBox(
         width: 15.w,
         height: 15.w,
         child: Image.asset(
-          'assets/icons/home.png',
+          '${LocalPath.icons}home.png',
           color: AppColors.primaryElement,
         ),
       ),
@@ -81,14 +81,14 @@ class _AppPageState extends State<AppPage> {
         width: 15.w,
         height: 15.w,
         child: Image.asset(
-          'assets/icons/search.png',
+          '${LocalPath.icons}search.png',
         ),
       ),
       activeIcon: SizedBox(
         width: 15.w,
         height: 15.w,
         child: Image.asset(
-          'assets/icons/search2.png',
+          '${LocalPath.icons}search2.png',
           color: AppColors.primaryElement,
         ),
       ),
@@ -99,14 +99,14 @@ class _AppPageState extends State<AppPage> {
         width: 15.w,
         height: 15.w,
         child: Image.asset(
-          'assets/icons/play-circle1.png',
+          '${LocalPath.icons}play-circle1.png',
         ),
       ),
       activeIcon: SizedBox(
         width: 15.w,
         height: 15.w,
         child: Image.asset(
-          'assets/icons/play-circle.png',
+          '${LocalPath.icons}play-circle.png',
           color: AppColors.primaryElement,
         ),
       ),
@@ -117,14 +117,14 @@ class _AppPageState extends State<AppPage> {
         width: 15.w,
         height: 15.w,
         child: Image.asset(
-          'assets/icons/message-circle.png',
+          '${LocalPath.icons}message-circle.png',
         ),
       ),
       activeIcon: SizedBox(
         width: 15.w,
         height: 15.w,
         child: Image.asset(
-          'assets/icons/message-circle.png',
+          '${LocalPath.icons}message-circle.png',
           color: AppColors.primaryElement,
         ),
       ),
@@ -135,14 +135,14 @@ class _AppPageState extends State<AppPage> {
         width: 15.w,
         height: 15.w,
         child: Image.asset(
-          'assets/icons/person.png',
+          '${LocalPath.icons}person.png',
         ),
       ),
       activeIcon: SizedBox(
         width: 15.w,
         height: 15.w,
         child: Image.asset(
-          'assets/icons/person2.png',
+          '${LocalPath.icons}person2.png',
           color: AppColors.primaryElement,
         ),
       ),

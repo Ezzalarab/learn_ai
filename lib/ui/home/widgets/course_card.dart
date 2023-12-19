@@ -30,7 +30,7 @@ class CourseCard extends StatelessWidget {
               course.name ?? 'unknown',
               maxLines: 1,
               style: TextStyle(
-                color: AppColors.primaryElementText,
+                color: AppColors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 14.sp,
                 overflow: TextOverflow.fade,
@@ -46,7 +46,7 @@ class CourseCard extends StatelessWidget {
               (course.lessonsCount ?? 0).toString(),
               maxLines: 1,
               style: TextStyle(
-                color: AppColors.primaryElementText,
+                color: AppColors.white,
                 fontWeight: FontWeight.normal,
                 fontSize: 12.sp,
                 overflow: TextOverflow.ellipsis,

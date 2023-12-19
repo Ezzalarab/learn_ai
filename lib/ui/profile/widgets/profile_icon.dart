@@ -14,7 +14,7 @@ class ProfileIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.w),
         image: const DecorationImage(
           image: AssetImage(
-            'assets/icons/headpic.png',
+            '${LocalPath.icons}headpic.png',
           ),
         ),
       ),
@@ -28,7 +28,7 @@ class ProfileIcon extends StatelessWidget {
           width: 25.w,
           height: 25.h,
           image: const AssetImage(
-            'assets/icons/edit_3.png',
+            '${LocalPath.icons}edit_3.png',
           ),
           //  Icon(
           //   Icons.edit,

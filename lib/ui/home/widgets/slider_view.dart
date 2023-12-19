@@ -17,9 +17,9 @@ class SliderView extends StatelessWidget {
                 context.read<HomePageBloc>().add(ChangeCarouselIndex(index));
               },
               children: const [
-                SliderItem(imagePath: 'assets/icons/art.png'),
-                SliderItem(imagePath: 'assets/icons/Image(1).png'),
-                SliderItem(imagePath: 'assets/icons/Image(2).png'),
+                SliderItem(imagePath: '${LocalPath.icons}art.png'),
+                SliderItem(imagePath: '${LocalPath.icons}Image(1).png'),
+                SliderItem(imagePath: '${LocalPath.icons}Image(2).png'),
               ],
             ),
           ),
@@ -29,7 +29,7 @@ class SliderView extends StatelessWidget {
                 dotsCount: 3,
                 position: state.carouselIndex,
                 decorator: DotsDecorator(
-                  color: AppColors.secondaryElementText,
+                  color: AppColors.greyA,
                   activeColor: AppColors.primaryElement,
                   size: const Size.square(5.0),
                   activeSize: const Size(20.0, 5.0),

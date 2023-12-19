@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
               slivers: [
                 const HeaderText(
                   text: 'Hello',
-                  textColor: AppColors.secondaryElementText,
+                  textColor: AppColors.greyA,
                   topMargin: 20,
                 ),
                 HeaderText(

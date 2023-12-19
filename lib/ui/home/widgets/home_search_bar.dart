@@ -14,10 +14,10 @@ class HomeSearchBar extends StatelessWidget {
               width: (MediaQuery.of(context).size.width * 0.65).w,
               height: 40.h,
               decoration: BoxDecoration(
-                color: AppColors.primaryBackground,
+                color: AppColors.primaryBg,
                 borderRadius: BorderRadius.circular(15.w),
                 border: Border.all(
-                  color: AppColors.secondaryElementText,
+                  color: AppColors.greyA,
                 ),
               ),
               child: Row(
@@ -26,7 +26,7 @@ class HomeSearchBar extends StatelessWidget {
                     margin: EdgeInsets.only(left: 16.w),
                     width: (MediaQuery.of(context).size.width * 0.05).w,
                     height: (MediaQuery.of(context).size.width * 0.05).w,
-                    child: Image.asset('assets/icons/search.png'),
+                    child: Image.asset('${LocalPath.icons}search.png'),
                   ),
                   Container(
                     // margin: EdgeInsets.only(top: 16.w),
@@ -69,7 +69,7 @@ class HomeSearchBar extends StatelessWidget {
                     color: AppColors.primaryElement,
                   ),
                 ),
-                child: Image.asset('assets/icons/options.png'),
+                child: Image.asset('${LocalPath.icons}options.png'),
               ),
             ),
           ],

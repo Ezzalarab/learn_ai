@@ -1,6 +1,10 @@
 class AppConstants {
-  static const double appWidth = 385;
+  static const double appWidth = 384;
   static const double appHight = 800;
+  static const double fullWidth = 324;
+  static const double smallButtonRadius = 6;
+  static const double largeButtonRadius = 16;
+  static const double imageRadius = 30;
 }
 
 class SharedPrefsKeys {

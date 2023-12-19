@@ -108,7 +108,7 @@ class _SignUpPageState extends State<SignUpPage> {
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1.0),
         child: Container(
-          color: AppColors.primarySecondaryBackground,
+          color: AppColors.secondaryBg,
           height: 1.0, // line thickness
         ),
       ),
@@ -163,7 +163,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Widget _buildForgotPassword() {
     return SizedBox(
-      width: 325.w,
+      width: AppConstants.fullWidth.w,
       height: 44.h,
       child: GestureDetector(
         onTap: () {},

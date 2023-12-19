@@ -11,7 +11,7 @@ AppBar profileAppBar() {
           SizedBox(
             width: 15.w,
             height: 12.h,
-            child: Image.asset('assets/icons/menu.png'),
+            child: Image.asset('${LocalPath.icons}menu.png'),
           ),
           Text(
             'Profile',
@@ -35,7 +35,7 @@ AppBar profileAppBar() {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                    'assets/icons/more-vertical.png',
+                    '${LocalPath.icons}more-vertical.png',
                   ),
                 ),
               ),

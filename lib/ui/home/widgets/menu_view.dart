@@ -9,7 +9,7 @@ class MenuView extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            width: 325.w,
+            width: AppConstants.fullWidth.w,
             margin: EdgeInsets.only(top: 15.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -20,7 +20,7 @@ class MenuView extends StatelessWidget {
                   child: MenuText(
                     'See all',
                     fontWeight: FontWeight.normal,
-                    color: AppColors.thirdElementText,
+                    color: AppColors.greyB,
                     size: 12.sp,
                   ),
                 ),

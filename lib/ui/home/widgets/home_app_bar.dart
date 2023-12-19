@@ -10,7 +10,7 @@ AppBar homeAppBar({String? avatarUrl}) {
     );
   } else {
     image = const AssetImage(
-      'assets/icons/person.png',
+      '${LocalPath.icons}person.png',
     );
   }
   return AppBar(
@@ -23,7 +23,7 @@ AppBar homeAppBar({String? avatarUrl}) {
           SizedBox(
             width: 15.w,
             height: 12.h,
-            child: Image.asset('assets/icons/menu.png'),
+            child: Image.asset('${LocalPath.icons}menu.png'),
           ),
           GestureDetector(
             onTap: () {

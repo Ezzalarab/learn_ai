@@ -68,7 +68,7 @@ class _SignInPageState extends State<SignInPage> {
                           SizedBox(height: 20.h),
                           CustomButton(
                             title: 'Sign Up',
-                            bgColor: AppColors.primaryBackground,
+                            bgColor: AppColors.primaryBg,
                             titleColor: AppColors.primaryElement,
                             onTap: () async {
                               Navigator.of(context).pushNamed(AppRoutes.signUp);
@@ -92,7 +92,7 @@ class _SignInPageState extends State<SignInPage> {
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1.0),
         child: Container(
-          color: AppColors.primarySecondaryBackground,
+          color: AppColors.secondaryBg,
           height: 1.0, // line thickness
         ),
       ),
@@ -147,7 +147,7 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget _buildForgotPassword() {
     return SizedBox(
-      width: 325.w,
+      width: AppConstants.fullWidth.w,
       height: 44.h,
       child: GestureDetector(
         onTap: () {},
