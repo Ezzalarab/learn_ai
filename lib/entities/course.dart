@@ -1,12 +1,12 @@
 class CourseRequestEntity {
-  int? id;
+  String? id;
 
   CourseRequestEntity({
     this.id,
   });
 
   Map<String, dynamic> toJson() => {
-        "id": id,
+        "courseId": id,
       };
 }
 
@@ -147,65 +147,53 @@ class AuthorItem {
 
 // login result
 class CourseItem {
-  String? user_token;
+  String? userToken;
   String? name;
   String? description;
   String? thumbnail;
   String? video;
   double? price;
-  String? amount_total;
+  String? amountTotal;
   int? lessonsCount;
-  int? video_len;
-  int? down_num;
-  int? follow;
-  int? score;
+  int? videoLen;
   int? id;
 
   CourseItem({
-    this.user_token,
+    this.userToken,
     this.name,
     this.description,
     this.thumbnail,
     this.video,
     this.price,
-    this.amount_total,
+    this.amountTotal,
     this.lessonsCount,
-    this.video_len,
-    this.down_num,
-    this.follow,
-    this.score,
+    this.videoLen,
     this.id,
   });
 
   factory CourseItem.fromMap(Map<String, dynamic> map) => CourseItem(
-        user_token: map["user_token"],
+        userToken: map["user_token"],
         name: map["name"],
         description: map["description"],
         thumbnail: map["thumbnail"],
         video: map["video"],
         price: double.tryParse((map["price"] ?? 0).toString()) ?? 0,
-        amount_total: map["amount_total"],
+        amountTotal: map["amount_total"],
         lessonsCount: map["lessons_count"],
-        video_len: map["video_len"],
-        down_num: map["down_num"],
-        follow: map["follow"],
-        score: map["score"],
+        videoLen: map["video_length"],
         id: map["id"],
       );
 
   Map<String, dynamic> toMap() => {
-        "user_token": user_token,
+        "user_token": userToken,
         "name": name,
         "description": description,
         "thumbnail": thumbnail,
         "video": video,
         "price": price,
-        "amount_total": amount_total,
+        "amount_total": amountTotal,
         "lessons_count": lessonsCount,
-        "video_len": video_len,
-        "down_num": down_num,
-        "follow": follow,
-        "score": score,
+        "video_length": videoLen,
         "id": id,
       };
 }

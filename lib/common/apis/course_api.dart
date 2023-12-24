@@ -33,4 +33,36 @@ class CourseApi {
       return Left(e.toString());
     }
   }
+
+  static Future<Either<String, CourseItem>> getCourse({
+    required CourseRequestEntity params,
+  }) async {
+    try {
+      Response response = await HttpUtil().post(
+        '/api/courseDetails',
+        queryParameters: params.toJson(),
+      );
+      if (response.statusCode?.isSuccessfulStatusCode ?? false) {
+        Map<String, dynamic>? responseBodyMap =
+            HttpUtil.getBodyMap(response.data);
+        if (responseBodyMap == null) {
+          return Left('unknown response data: ${response.data.runtimeType}');
+        }
+        ApiResponseEntity apiResponseEntity =
+            ApiResponseEntity.fromMap(responseBodyMap);
+        CourseItem coursesList = CourseItem.fromMap(apiResponseEntity.data);
+
+        return Right(coursesList);
+      } else {
+        return Left(HttpUtil.getApiErrorMessage(response));
+      }
+    } catch (e, s) {
+      if (kDebugMode) {
+        log('error with loading course');
+        log(e.toString());
+        print(s);
+      }
+      return Left(e.toString());
+    }
+  }
 }

@@ -36,7 +36,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - ${LocalPath.icons}
+    - assets/icons/
 
   fonts:
     - family: Avenir

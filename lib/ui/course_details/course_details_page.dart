@@ -8,16 +8,17 @@ class CourseDetailsPage extends StatefulWidget {
 }
 
 class _CourseDetailsPageState extends State<CourseDetailsPage> {
-  late int courseId;
+  late CourseDetailsC _courseDetailsC;
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    Map<String, dynamic> arguments =
-        (ModalRoute.of(context)?.settings.arguments ?? {})
-            as Map<String, dynamic>;
-    print(arguments['courseId']);
-    courseId = arguments['courseId'];
+    _courseDetailsC = CourseDetailsC(context: context);
+    _courseDetailsC.init();
   }
 
   @override
