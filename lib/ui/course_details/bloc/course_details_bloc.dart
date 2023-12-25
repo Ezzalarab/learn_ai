@@ -8,6 +8,7 @@ part 'course_details_state.dart';
 class CourseDetailsBloc extends Bloc<CourseDetailsEvent, CourseDetailsState> {
   CourseDetailsBloc() : super(const CourseDetailsInitial()) {
     on<GetCourseDetails>(_getCourseDetails);
+    on<GoBuyCourse>(_goBuyCourse);
   }
 
   Future<void> _getCourseDetails(
@@ -40,4 +41,9 @@ class CourseDetailsBloc extends Bloc<CourseDetailsEvent, CourseDetailsState> {
       }
     }
   }
+
+  Future<void> _goBuyCourse(
+    GoBuyCourse event,
+    Emitter<CourseDetailsState> emit,
+  ) async {}
 }

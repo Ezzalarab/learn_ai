@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import '../app/exports.dart';
 
 class LocalStorage {
@@ -40,7 +42,11 @@ class LocalStorage {
   UserItem? getUserProfile() {
     String? localProfile = _prefs.getString(SharedPrefsKeys.userProfileKey);
     if (localProfile != null) {
-      return UserItem.fromMap(jsonDecode(localProfile));
+      UserItem userProfile = UserItem.fromMap(jsonDecode(localProfile));
+      if (kDebugMode) {
+        log(userProfile.accessToken ?? 'no access token');
+      }
+      return userProfile;
     }
     return null;
   }

@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:url_launcher/url_launcher.dart';
+
 import '../../app/exports.dart';
 
 class CourseDetailsC {
@@ -13,24 +17,44 @@ class CourseDetailsC {
       toastInfo(msg: 'courseId is null');
       return;
     }
-    await asyncLoadAllData(courseId);
+    asyncLoadAllData(courseId);
   }
 
-  Future<void> asyncLoadAllData(String courseId) async {
-    // CourseRequestEntity courseRequestEntity = CourseRequestEntity(
-    //   id: courseId,
-    // );
-    // final failureOrCourse =
-    //     await CourseApi.getCourse(params: courseRequestEntity);
-    // failureOrCourse.fold(
-    //   (failureMessage) {
-    //     toastInfo(msg: failureMessage);
-    //   },
-    //   (course) {
-    //     print('course.name');
-    //     print(course.name);
-    //   },
-    // );
+  void asyncLoadAllData(String courseId) {
     context.read<CourseDetailsBloc>().add(GetCourseDetails(courseId));
+  }
+
+  void goBuy(String? courseId) {
+    if (courseId == null) {
+      toastInfo(msg: 'courseId is null');
+      return;
+    }
+    EasyLoading.show(
+      indicator: const CircularProgressIndicator(),
+      maskType: EasyLoadingMaskType.clear,
+      dismissOnTap: true,
+    );
+    // context.read<CourseDetailsBloc>().add(GoBuyCourse(courseId));
+    CourseRequestEntity courseRequestEntity = CourseRequestEntity(
+      id: courseId,
+    );
+    CourseApi.buyCourse(
+      params: courseRequestEntity,
+    ).then((failureOrPaymentUrl) {
+      EasyLoading.dismiss();
+      failureOrPaymentUrl.fold(
+        (failureMessage) {
+          if (kDebugMode) {
+            log('Course Details Failure');
+            log(failureMessage);
+          }
+          toastInfo(msg: failureMessage);
+        },
+        (paymentLink) {
+          log(paymentLink);
+          launchUrl(Uri.parse(paymentLink));
+        },
+      );
+    });
   }
 }

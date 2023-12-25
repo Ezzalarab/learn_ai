@@ -158,7 +158,7 @@ class CourseItem {
   String? amountTotal;
   int lessonsCount;
   int videoLength;
-  int? id;
+  String? id;
 
   CourseItem({
     this.userToken,
@@ -187,7 +187,7 @@ class CourseItem {
       amountTotal: map["amount_total"] ?? '0',
       lessonsCount: map["lessons_count"] ?? 0,
       videoLength: map["video_length"] ?? 0,
-      id: map["id"],
+      id: map["id"]?.toString(),
     );
   }
 

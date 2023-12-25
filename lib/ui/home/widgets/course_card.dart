@@ -41,7 +41,7 @@ class CourseCard extends StatelessWidget {
               bottom: 10.h,
             ),
             child: Text(
-              (course.lessonsCount ?? 0).toString(),
+              (course.lessonsCount).toString(),
               maxLines: 1,
               style: TextStyle(
                 color: AppColors.white,

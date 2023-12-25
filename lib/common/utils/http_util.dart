@@ -69,7 +69,7 @@ class HttpUtil {
       }
     }
     if (apiResponse != null) {
-      return apiResponse.msg ?? apiResponse.data.toString();
+      return apiResponse.message ?? apiResponse.data.toString();
     }
     return response.data.toString();
   }

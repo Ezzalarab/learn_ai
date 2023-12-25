@@ -1,18 +1,18 @@
 class ApiResponseEntity {
-  int? code;
-  String? msg;
+  int code;
+  String? message;
   dynamic data;
 
   ApiResponseEntity({
-    this.code,
-    this.msg,
-    this.data,
+    required this.code,
+    required this.message,
+    required this.data,
   });
 
   factory ApiResponseEntity.fromMap(Map<String, dynamic> json) =>
       ApiResponseEntity(
-        code: json["code"],
-        msg: json["msg"],
+        code: json["code"] ?? 600,
+        message: json["message"] ?? 'no message',
         data: json["data"],
       );
 }

@@ -58,6 +58,9 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                         ),
                         CustomButton(
                           title: 'Go Buy',
+                          onTap: () {
+                            _courseDetailsC.goBuy(course.id);
+                          },
                           margin: EdgeInsets.symmetric(vertical: 20.w),
                         ),
                         const MenuText('The Course Includes'),
@@ -73,7 +76,7 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                   child: Text(state.failureMessage),
                 );
               } else if (state is CourseDetailsLoading) {
-                return CourseDetailsPlaceholder();
+                return const CourseDetailsPlaceholder();
               } else {
                 return Center(
                   child: Text(state.runtimeType.toString()),
