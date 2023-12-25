@@ -2,8 +2,6 @@ import '../../../app/exports.dart';
 
 AppBar homeAppBar({String? avatarUrl}) {
   ImageProvider image;
-  print('avatarUrl');
-  print(avatarUrl);
   if (avatarUrl?.isNotEmpty ?? false) {
     image = NetworkImage(
       avatarUrl!,

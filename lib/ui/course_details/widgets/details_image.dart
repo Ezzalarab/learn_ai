@@ -18,7 +18,7 @@ class DetailsImage extends StatelessWidget {
           Radius.circular(AppConstants.imageRadius.w),
         ),
         image: DecorationImage(
-          fit: BoxFit.fitWidth,
+          fit: BoxFit.cover,
           image: NetworkImage(
             imageUrl,
           ),

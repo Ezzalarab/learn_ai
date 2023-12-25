@@ -55,8 +55,6 @@ class UserItem {
   });
 
   factory UserItem.fromMap(Map<String, dynamic> json) {
-    print('user item json');
-    print(json);
     return UserItem(
       accessToken: json["access_token"],
       token: json["token"],

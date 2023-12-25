@@ -1,3 +1,5 @@
+import 'package:learn_ai/app/exports.dart';
+
 class CourseRequestEntity {
   String? id;
 
@@ -148,41 +150,46 @@ class AuthorItem {
 // login result
 class CourseItem {
   String? userToken;
-  String? name;
-  String? description;
-  String? thumbnail;
+  String name;
+  String description;
+  String thumbnail;
   String? video;
-  double? price;
+  double price;
   String? amountTotal;
-  int? lessonsCount;
-  int? videoLen;
+  int lessonsCount;
+  int videoLength;
   int? id;
 
   CourseItem({
     this.userToken,
-    this.name,
-    this.description,
-    this.thumbnail,
+    required this.name,
+    required this.description,
+    required this.thumbnail,
     this.video,
-    this.price,
+    this.price = 0,
     this.amountTotal,
-    this.lessonsCount,
-    this.videoLen,
+    this.lessonsCount = 0,
+    this.videoLength = 0,
     this.id,
   });
 
-  factory CourseItem.fromMap(Map<String, dynamic> map) => CourseItem(
-        userToken: map["user_token"],
-        name: map["name"],
-        description: map["description"],
-        thumbnail: map["thumbnail"],
-        video: map["video"],
-        price: double.tryParse((map["price"] ?? 0).toString()) ?? 0,
-        amountTotal: map["amount_total"],
-        lessonsCount: map["lessons_count"],
-        videoLen: map["video_length"],
-        id: map["id"],
-      );
+  factory CourseItem.fromMap(Map<String, dynamic> map) {
+    String thumbnail = map["thumbnail"] != null
+        ? ApiUrls.uploadsUrl + map["thumbnail"]
+        : AppConstants.noImageUrl;
+    return CourseItem(
+      userToken: map["user_token"],
+      name: map["name"],
+      description: map["description"] ?? 'no description',
+      thumbnail: thumbnail,
+      video: map["video"],
+      price: double.tryParse((map["price"] ?? 0).toString()) ?? 0,
+      amountTotal: map["amount_total"] ?? '0',
+      lessonsCount: map["lessons_count"] ?? 0,
+      videoLength: map["video_length"] ?? 0,
+      id: map["id"],
+    );
+  }
 
   Map<String, dynamic> toMap() => {
         "user_token": userToken,
@@ -193,7 +200,7 @@ class CourseItem {
         "price": price,
         "amount_total": amountTotal,
         "lessons_count": lessonsCount,
-        "video_length": videoLen,
+        "video_length": videoLength,
         "id": id,
       };
 }

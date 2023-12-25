@@ -15,9 +15,7 @@ class CourseCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15.w),
         image: DecorationImage(
           fit: BoxFit.fill,
-          image: NetworkImage(
-            ApiUrls.uploadsUrl + (course.thumbnail ?? 'images/default.png'),
-          ),
+          image: NetworkImage(course.thumbnail),
         ),
       ),
       child: Column(
@@ -27,7 +25,7 @@ class CourseCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(left: 10.w),
             child: Text(
-              course.name ?? 'unknown',
+              course.name,
               maxLines: 1,
               style: TextStyle(
                 color: AppColors.white,

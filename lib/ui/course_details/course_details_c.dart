@@ -17,19 +17,20 @@ class CourseDetailsC {
   }
 
   Future<void> asyncLoadAllData(String courseId) async {
-    CourseRequestEntity courseRequestEntity = CourseRequestEntity(
-      id: courseId,
-    );
-    final failureOrCourse =
-        await CourseApi.getCourse(params: courseRequestEntity);
-    failureOrCourse.fold(
-      (failureMessage) {
-        toastInfo(msg: failureMessage);
-      },
-      (course) {
-        print('course.name');
-        print(course.name);
-      },
-    );
+    // CourseRequestEntity courseRequestEntity = CourseRequestEntity(
+    //   id: courseId,
+    // );
+    // final failureOrCourse =
+    //     await CourseApi.getCourse(params: courseRequestEntity);
+    // failureOrCourse.fold(
+    //   (failureMessage) {
+    //     toastInfo(msg: failureMessage);
+    //   },
+    //   (course) {
+    //     print('course.name');
+    //     print(course.name);
+    //   },
+    // );
+    context.read<CourseDetailsBloc>().add(GetCourseDetails(courseId));
   }
 }

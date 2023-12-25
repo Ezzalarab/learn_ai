@@ -1,5 +1,6 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
-import '../../app/extensions.dart';
 
 import '../../app/exports.dart';
 
@@ -15,6 +16,9 @@ class UserApi {
         ApiResponseEntity apiResponseEntity =
             ApiResponseEntity.fromMap(response.data);
         UserItem userItem = UserItem.fromMap(apiResponseEntity.data);
+        if (kDebugMode) {
+          log(userItem.accessToken ?? 'no access token');
+        }
         return Right(userItem);
       } else {
         return Left(response.data.toString());
